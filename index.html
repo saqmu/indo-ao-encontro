@@ -8,24 +8,38 @@
 </head>
 <body>
 
-    <!-- CENÁRIO DO TREM -->
-    <div id="cenario-total">
+    <div id="container-trem">
         
-        <!-- JANELA (PARTE DE CIMA) -->
-        <section id="janela">
-            <div id="paisagem">
-                <!-- As árvores e montanhas vão entrar aqui depois -->
-                <div class="ceu"></div>
+        <!-- PARTE DA JANELA -->
+        <section id="area-janela">
+            <div class="moldura-janela">
+                <div id="paisagem">
+                    <div class="ceu"></div>
+                    <!-- Árvores entrarão aqui depois -->
+                </div>
             </div>
+            <div class="parede-trem"></div>
         </section>
 
-        <!-- MESA (PARTE DE BAIXO) -->
-        <section id="mesa">
-            <div id="livro">
-                <h1 class="titulo-faustina">Minhas Anotações</h1>
-                <textarea id="bloco-notas" placeholder="Escreva algo aqui..."></textarea>
+        <!-- PARTE DA MESA -->
+        <section id="area-mesa">
+            <div id="mesa-superficie">
+                <div id="livro-aberto">
+                    <div class="pagina">
+                        <h2 class="titulo-faustina">Indo ao Encontro</h2>
+                        <textarea id="bloco-notas" placeholder="Escreva sua jornada aqui..."></textarea>
+                    </div>
+                </div>
+
+                <div id="recipiente-cafe">
+                    <div class="fumaca-container">
+                        <span class="fumaca s1"></span>
+                        <span class="fumaca s2"></span>
+                        <span class="fumaca s3"></span>
+                    </div>
+                    <div id="cafe-icone">☕</div>
+                </div>
             </div>
-            <div id="cafe">☕</div>
         </section>
 
     </div>
