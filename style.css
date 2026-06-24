@@ -1,65 +1,99 @@
-/* Importando a fonte Faustina do Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Faustina:wght@400;700&display=swap');
 
 body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow-x: hidden; /* Evita que o site balance para os lados */
+    overflow-x: hidden;
     font-family: 'Faustina', serif;
+    scroll-behavior: smooth; /* Deixa a rolagem suave */
+}
+
+/* Criando o movimento do trem (Tremor) */
+@keyframes tremor {
+    0% { transform: translate(0, 0); }
+    25% { transform: translate(0.5px, 0.5px); }
+    50% { transform: translate(-0.5px, 1px); }
+    75% { transform: translate(1px, -0.5px); }
+    100% { transform: translate(0, 0); }
+}
+
+/* Criando a fumaça do café */
+@keyframes fumaca {
+    0% { opacity: 0.3; transform: translateY(0) scale(1); }
+    50% { opacity: 0.6; transform: translateY(-10px) scale(1.2); }
+    100% { opacity: 0; transform: translateY(-20px) scale(1.5); }
 }
 
 #cenario-total {
-    height: 200vh; /* O site terá o dobro da altura da tela para podermos "rolar" */
-    background: #1a1a1a;
+    height: 200vh;
 }
 
 #janela {
-    height: 100vh; /* Ocupa a tela inteira ao abrir */
-    background: linear-gradient(to bottom, #87CEEB, #f0f8ff); /* Um azul de céu inicial */
+    height: 100vh;
+    background: linear-gradient(to bottom, #2c3e50, #87CEEB); /* Um degradê mais bonito */
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
 #mesa {
-    height: 100vh; /* Ocupa a tela inteira ao rolar para baixo */
-    background: #4a3728; /* Cor de madeira */
+    height: 100vh;
+    background: #3d2b1f;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    /* Aplicando o tremor do trem na mesa inteira */
+    animation: tremor 0.3s infinite;
 }
 
 #livro {
-    background: #fdf5e6; /* Cor de papel antigo */
+    background: #fdf5e6;
     width: 80%;
     max-width: 600px;
     height: 70%;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-radius: 5px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    border-radius: 2px;
+    background-image: radial-gradient(#d2b48c 1px, transparent 1px); /* Pontinhos de papel antigo */
+    background-size: 20px 20px;
 }
 
 #bloco-notas {
     width: 100%;
-    height: 80%;
+    height: 90%;
     background: transparent;
     border: none;
     font-family: 'Faustina', serif;
-    font-size: 1.2rem;
-    outline: none; /* Tira aquela borda azul ao clicar */
-    resize: none; /* Impede de puxar o cantinho da caixa */
+    font-size: 1.3rem;
+    line-height: 1.6;
+    outline: none;
+    resize: none;
+    color: #2c3e50;
+}
+
+#area-cafe {
+    position: relative;
+    margin-top: 20px;
+    font-size: 3rem;
+}
+
+/* A fumacinha em cima do café */
+#area-cafe::after {
+    content: "☁️";
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 1.5rem;
+    animation: fumaca 2s infinite;
+    filter: blur(5px);
 }
 
 .titulo-faustina {
     text-align: center;
     color: #5d4037;
-}
-
-#cafe {
-    font-size: 3rem;
-    margin-top: 20px;
-    filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.3));
+    margin-top: 0;
+    opacity: 0.7;
 }
