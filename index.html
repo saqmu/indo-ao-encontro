@@ -12,7 +12,7 @@
         
         <!-- JANELA -->
         <section id="area-janela">
-            <div class="parede-interna">
+            <div class="parede-madeira"> <!-- Textura rústica aqui -->
                 <div class="moldura-janela">
                     <div id="paisagem">
                         <div class="ceu"></div>
@@ -21,31 +21,37 @@
             </div>
         </section>
 
-        <!-- MESA E LIVRO -->
+        <!-- MESA E CHÃO -->
         <section id="area-mesa">
-            <div id="reflexo-janela"></div> <!-- O brilho da janela na mesa -->
+            <div id="chao-trem"></div> <!-- Chão que aparece atrás/abaixo da mesa -->
+            
+            <div id="reflexo-janela"></div>
             
             <div id="mesa-perspectiva">
                 
-                <!-- LIVRO ABERTO -->
-                <div id="livro-aberto">
-                    <div class="pagina esquerda">
-                        <h2 class="titulo-faustina">Diário de Bordo</h2>
-                    </div>
-                    <div class="divisoria-central"></div>
-                    <div class="pagina direita">
-                        <textarea id="bloco-notas" placeholder="Comece a escrever..."></textarea>
+                <!-- LIVRO COM VOLUME (Pseudo-3D) -->
+                <div id="livro-container">
+                    <div id="livro-aberto">
+                        <div class="pagina esquerda">
+                            <h2 class="titulo-faustina">Diário de Bordo</h2>
+                        </div>
+                        <div class="divisoria-central"></div>
+                        <div class="pagina direita">
+                            <textarea id="bloco-notas" placeholder="Comece a escrever sua jornada..."></textarea>
+                        </div>
                     </div>
                 </div>
 
-                <!-- CAFÉ -->
+                <!-- CAFÉ COM PIRES -->
                 <div id="recipiente-cafe">
                     <div class="vapor-container">
                         <span class="particula p1"></span>
                         <span class="particula p2"></span>
                         <span class="particula p3"></span>
                     </div>
-                    <div id="xicara">☕</div>
+                    <div id="pires"> <!-- O pires dá a profundidade -->
+                        <div id="xicara">☕</div>
+                    </div>
                 </div>
 
             </div>
