@@ -12,7 +12,7 @@
         
         <!-- JANELA -->
         <section id="area-janela">
-            <div class="parede-madeira"> <!-- Textura rústica aqui -->
+            <div class="parede-madeira">
                 <div class="moldura-janela">
                     <div id="paisagem">
                         <div class="ceu"></div>
@@ -21,37 +21,36 @@
             </div>
         </section>
 
-        <!-- MESA E CHÃO -->
+        <!-- MESA 3D -->
         <section id="area-mesa">
-            <div id="chao-trem"></div> <!-- Chão que aparece atrás/abaixo da mesa -->
+            <div id="chao-trem"></div>
             
-            <div id="reflexo-janela"></div>
-            
-            <div id="mesa-perspectiva">
+            <div id="cena-3d">
                 
-                <!-- LIVRO COM VOLUME (Pseudo-3D) -->
-                <div id="livro-container">
-                    <div id="livro-aberto">
-                        <div class="pagina esquerda">
-                            <h2 class="titulo-faustina">Diário de Bordo</h2>
-                        </div>
-                        <div class="divisoria-central"></div>
-                        <div class="pagina direita">
-                            <textarea id="bloco-notas" placeholder="Comece a escrever sua jornada..."></textarea>
+                <!-- LIVRO 3D (POSICIONADO PARA NORDESTE) -->
+                <div id="livro-3d">
+                    <div class="capa-baixo"></div>
+                    <div class="paginas-volume"></div>
+                    <div class="pagina-topo">
+                        <h2 class="titulo-faustina">Anotações</h2>
+                        <div class="pauta-keep">
+                            <textarea id="bloco-notas" placeholder="Escreva sua jornada..."></textarea>
                         </div>
                     </div>
                 </div>
 
-                <!-- CAFÉ COM PIRES -->
-                <div id="recipiente-cafe">
+                <!-- XÍCARA 3D -->
+                <div id="xicara-3d">
                     <div class="vapor-container">
-                        <span class="particula p1"></span>
-                        <span class="particula p2"></span>
-                        <span class="particula p3"></span>
+                        <span class="p p1"></span>
+                        <span class="p p2"></span>
+                        <span class="p p3"></span>
                     </div>
-                    <div id="pires"> <!-- O pires dá a profundidade -->
-                        <div id="xicara">☕</div>
+                    <div class="pires"></div>
+                    <div class="corpo-xicara">
+                        <div class="cafe-liquido"></div>
                     </div>
+                    <div class="asa-xicara"></div>
                 </div>
 
             </div>
