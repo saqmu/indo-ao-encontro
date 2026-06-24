@@ -3,88 +3,86 @@
 body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
     background: #1a1a1a;
-    color: #3d2b1f;
     font-family: 'Faustina', serif;
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
 #container-trem {
-    height: 200vh; /* 100vh para janela, 100vh para mesa */
+    height: 200vh; /* Dobro da tela: Janela em cima, Mesa embaixo */
 }
 
-/* --- JANELA --- */
+/* --- ESTILO DA JANELA --- */
 #area-janela {
     height: 100vh;
+    background: #2c1e14;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2c1e14; /* Cor da parede interna do trem */
-    position: relative;
-    border-bottom: 10px solid #1a110a;
+    border-bottom: 20px solid #1a110a;
 }
 
 .moldura-janela {
     width: 80%;
-    height: 70%;
+    height: 65%;
     background: #87CEEB;
     border: 15px solid #3d2b1f;
     border-radius: 40px 40px 10px 10px;
     box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
     overflow: hidden;
-    position: relative;
 }
 
-/* --- MESA --- */
+/* --- ESTILO DA MESA E TREMOR --- */
 #area-mesa {
     height: 100vh;
     background: #1a110a;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Alinha a mesa no topo desta seção */
+    align-items: center;
 }
 
 #mesa-superficie {
     width: 100%;
     height: 100%;
-    background: #3d2b1f; /* Cor de madeira escura */
+    background: #3d2b1f;
     background-image: url('https://www.transparenttextures.com/patterns/wood-pattern.png');
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    position: relative;
-    /* Tremor suave: mudamos apenas a posição interna */
-    animation: vibrar-trem 0.2s infinite;
+    padding: 0 5%;
+    /* Tremor do trem afetando mesa, livro e café juntos */
+    animation: vibrar-mesa 0.4s infinite ease-in-out;
 }
 
-@keyframes vibrar-trem {
+@keyframes vibrar-mesa {
     0% { transform: translateY(0); }
-    50% { transform: translateY(1px); }
+    50% { transform: translateY(2px); }
     100% { transform: translateY(0); }
 }
 
-/* --- LIVRO --- */
+/* --- ESTILO DO LIVRO --- */
 #livro-aberto {
-    width: 85%;
-    max-width: 800px;
-    height: 80%;
+    width: 60%; /* Reduzido de 80% para dar mais espaço */
+    max-width: 700px;
+    height: 70%;
     background: #f4ece0;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
-    padding: 20px;
+    box-shadow: 15px 15px 35px rgba(0,0,0,0.6);
+    padding: 30px;
     border-radius: 5px;
-    display: flex;
-    position: relative;
+    background-image: radial-gradient(#d2b48c 0.5px, transparent 0.5px);
+    background-size: 25px 25px;
 }
 
 .pagina {
     width: 100%;
-    border: 1px solid rgba(0,0,0,0.1);
-    padding: 20px;
+    height: 100%;
 }
 
 #bloco-notas {
     width: 100%;
-    height: 80%;
+    height: 90%;
     background: transparent;
     border: none;
     outline: none;
@@ -95,49 +93,52 @@ body, html {
     resize: none;
 }
 
-/* --- CAFÉ E FUMAÇA --- */
+/* --- CAFÉ GIGANTE E FUMAÇA ANIMADA --- */
 #recipiente-cafe {
-    position: absolute;
-    bottom: 50px;
-    right: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    width: 30%; /* Ocupa uma parte proporcional ao livro */
 }
 
 #cafe-icone {
-    font-size: 5rem; /* Café maior como você pediu */
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    font-size: 12rem; /* Tamanho proporcional que você pediu */
+    filter: drop-shadow(5px 10px 20px rgba(0,0,0,0.4));
+    line-height: 1;
 }
 
-.fumaca-container {
-    height: 60px;
+.fumaca-wrapper {
+    height: 100px;
+    width: 100px;
     position: relative;
 }
 
-.fumaca {
+.vapor {
     position: absolute;
-    width: 15px;
-    height: 15px;
-    background: rgba(255, 255, 255, 0.3);
+    bottom: 20px;
+    width: 30px;
+    height: 30px;
+    background: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    filter: blur(8px);
-    animation: subir-fumaca 2s infinite ease-out;
+    filter: blur(10px);
+    animation: animar-vapor 3s infinite linear;
     opacity: 0;
 }
 
-.s1 { left: -10px; animation-delay: 0.2s; }
-.s2 { left: 5px; animation-delay: 0.7s; }
-.s3 { left: 15px; animation-delay: 1.2s; }
+.s1 { left: 10px; animation-delay: 0s; }
+.s2 { left: 40px; animation-delay: 1s; }
+.s3 { left: 70px; animation-delay: 2s; }
 
-@keyframes subir-fumaca {
-    0% { transform: translateY(0) scale(1); opacity: 0; }
-    50% { opacity: 0.6; }
-    100% { transform: translateY(-50px) scale(2); opacity: 0; }
+@keyframes animar-vapor {
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    30% { opacity: 0.5; }
+    60% { opacity: 0.2; }
+    100% { transform: translateY(-120px) scale(2.5); opacity: 0; }
 }
 
 .titulo-faustina {
-    margin: 0 0 20px 0;
-    font-weight: 700;
+    margin-top: 0;
+    color: #5d4037;
     border-bottom: 2px solid rgba(0,0,0,0.05);
 }
