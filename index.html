@@ -10,35 +10,42 @@
 
     <div id="container-trem">
         
-        <!-- PARTE DA JANELA (O QUE VEMOS AO SUBIR) -->
+        <!-- JANELA -->
         <section id="area-janela">
-            <div class="moldura-janela">
-                <div id="paisagem">
-                    <div class="ceu"></div>
-                    <!-- Árvores e biomas entrarão aqui futuramente -->
+            <div class="parede-interna">
+                <div class="moldura-janela">
+                    <div id="paisagem">
+                        <div class="ceu"></div>
+                    </div>
                 </div>
             </div>
-            <div class="parede-trem"></div>
         </section>
 
-        <!-- PARTE DA MESA (O QUE VEMOS AO DESCER) -->
+        <!-- MESA E LIVRO -->
         <section id="area-mesa">
-            <div id="mesa-superficie">
+            <div id="reflexo-janela"></div> <!-- O brilho da janela na mesa -->
+            
+            <div id="mesa-perspectiva">
                 
+                <!-- LIVRO ABERTO -->
                 <div id="livro-aberto">
-                    <div class="pagina">
-                        <h2 class="titulo-faustina">Indo ao Encontro</h2>
-                        <textarea id="bloco-notas" placeholder="Escreva sua jornada aqui..."></textarea>
+                    <div class="pagina esquerda">
+                        <h2 class="titulo-faustina">Diário de Bordo</h2>
+                    </div>
+                    <div class="divisoria-central"></div>
+                    <div class="pagina direita">
+                        <textarea id="bloco-notas" placeholder="Comece a escrever..."></textarea>
                     </div>
                 </div>
 
+                <!-- CAFÉ -->
                 <div id="recipiente-cafe">
-                    <div class="fumaca-wrapper">
-                        <span class="vapor s1"></span>
-                        <span class="vapor s2"></span>
-                        <span class="vapor s3"></span>
+                    <div class="vapor-container">
+                        <span class="particula p1"></span>
+                        <span class="particula p2"></span>
+                        <span class="particula p3"></span>
                     </div>
-                    <div id="cafe-icone">☕</div>
+                    <div id="xicara">☕</div>
                 </div>
 
             </div>
