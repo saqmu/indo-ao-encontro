@@ -1,146 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Faustina:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Faustina:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+    --cor-madeira: #3d2610;
+    --cor-folha: #fffef0;
+}
 
 body, html {
     margin: 0; padding: 0;
-    height: 100%; background: #000;
+    overflow-x: hidden;
     font-family: 'Faustina', serif;
-    scroll-behavior: smooth; overflow-x: hidden;
+    background-color: #000;
 }
 
-/* PAREDE DE MADEIRA RÚSTICA */
-.parede-madeira {
+/* EFEITO DE PERSPECTIVA DO MUNDO */
+#mundo {
+    height: 200vh; /* Para poder scrollar */
+    scroll-behavior: smooth;
+}
+
+/* JANELA */
+#area-janela {
+    height: 100vh;
+    display: flex; justify-content: center; align-items: center;
+    background: var(--cor-madeira);
+    position: relative;
+    z-index: 10;
+}
+
+.moldura {
+    width: 80vw; height: 60vh;
+    border: 25px solid #251608;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.9);
+}
+
+#cenario {
     width: 100%; height: 100%;
-    background: repeating-linear-gradient(90deg, #8b5a2b, #8b5a2b 15px, #5d3a1a 18px, #3d2610 20px);
-    display: flex; justify-content: center; align-items: center;
+    background: linear-gradient(to bottom, #87CEEB, #E0F7FA);
+    position: relative;
 }
 
-#area-janela { height: 100vh; position: relative; }
-.moldura-janela {
-    width: 80%; height: 60%; background: #87CEEB;
-    border: 20px solid #2d1b10; border-radius: 60px;
-    box-shadow: inset 0 0 80px rgba(0,0,0,0.8);
-}
-
-/* AMBIENTE MESA */
+/* MESA E 3D */
 #area-mesa {
-    height: 100vh; background: #050505;
+    height: 100vh;
+    background: #0a0a0a;
+    perspective: 1500px;
     display: flex; justify-content: center; align-items: center;
-    position: relative; overflow: hidden;
-}
-
-#chao-trem {
-    position: absolute; bottom: 0; width: 100%; height: 30%;
-    background: linear-gradient(to bottom, #111, #000);
 }
 
 #cena-3d {
-    width: 100%; height: 100%;
-    background: #001f3f; /* Azul Marinho Escuro */
-    background-image: radial-gradient(circle at 50% 0%, #003366 0%, #001a33 100%);
-    display: flex; justify-content: center; align-items: center;
-    perspective: 1200px; /* Sensação de profundidade */
-}
-
-/* --- LIVRO 3D (TIPO VERTICAL/NOTEPAD) --- */
-#livro-3d {
-    width: 320px; height: 450px; /* Mais comprido que largo */
     position: relative;
-    transform: rotateX(45deg) rotateY(5deg) rotateZ(-15deg); /* Orientação "Nordeste" */
+    transform: rotateX(25deg);
+    transition: transform 0.1s ease-out;
+}
+
+/* O LIVRO */
+#livro-3d {
+    width: 500px; height: 350px;
+    background: var(--cor-folha);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5), -5px 0 10px #ccc inset;
+    border-radius: 5px;
+    display: flex;
+    position: relative;
     transform-style: preserve-3d;
-    transition: transform 0.5s;
-    animation: vibrar-objeto 0.4s infinite alternate;
 }
 
-.capa-baixo {
-    position: absolute; width: 100%; height: 100%;
-    background: #8b7355; border-radius: 5px;
-    transform: translateZ(-10px);
-    box-shadow: 20px 30px 50px rgba(0,0,0,0.7);
+#livro-3d::before { /* Lombada central */
+    content: '';
+    position: absolute; left: 50%; top:0;
+    width: 2px; height: 100%;
+    background: rgba(0,0,0,0.1);
 }
 
-.paginas-volume {
-    position: absolute; width: 100%; height: 100%;
-    background: #e0e0e0; transform: translateZ(-5px);
-    border-radius: 5px; border-right: 4px solid #ccc;
-}
-
-.pagina-topo {
-    position: absolute; width: 100%; height: 100%;
-    background: #fffef0; padding: 20px;
-    box-sizing: border-box; border-radius: 2px;
-}
-
-/* Estilo de Pauta Keep */
-.pauta-keep {
-    border-top: 1px solid #ddd; height: 80%;
-    background-image: linear-gradient(#eee 1.1em, transparent .1em);
-    background-size: 100% 1.2em;
-}
+.folha { flex: 1; padding: 20px; }
 
 #bloco-notas {
-    width: 100%; height: 100%; background: transparent;
-    border: none; outline: none; resize: none;
-    font-family: 'Faustina', serif; font-size: 1.1rem;
-    line-height: 1.2em; color: #333;
+    width: 90%; height: 70%;
+    background: transparent; border: none; outline: none;
+    resize: none; font-family: inherit; font-size: 1.2rem;
+    line-height: 1.5; color: #333;
 }
 
-/* --- XÍCARA 3D (MÉTODO RELEVO) --- */
+/* CAFÉ */
 #xicara-3d {
-    margin-left: 100px;
-    transform: rotateX(45deg) rotateZ(-10deg);
-    position: relative;
+    position: absolute; right: -150px; bottom: 50px;
+    width: 100px; height: 80px; background: #eee;
+    border-radius: 0 0 50px 50px;
 }
 
-.pires {
-    width: 160px; height: 160px;
-    background: #222; border-radius: 50%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+.liquido {
+    width: 80%; height: 20%; background: #3d2610;
+    margin: 10px auto; border-radius: 50%;
 }
 
-.corpo-xicara {
-    position: absolute; top: 30px; left: 30px;
-    width: 100px; height: 100px;
-    background: #f0f0f0; border-radius: 50%;
-    border-bottom: 8px solid #ddd;
-    display: flex; justify-content: center; align-items: center;
+/* ANIMAÇÃO DE TREMOR */
+.tremor {
+    animation: vibra 0.2s infinite alternate;
 }
 
-.cafe-liquido {
-    width: 80px; height: 80px;
-    background: #3d2610; border-radius: 50%;
-    box-shadow: inset 0 5px 10px rgba(0,0,0,0.5);
+@keyframes vibra {
+    from { transform: translateY(0); }
+    to { transform: translateY(2px) translateX(1px); }
 }
 
-.asa-xicara {
-    position: absolute; right: 20px; top: 60px;
-    width: 30px; height: 40px;
-    border: 8px solid #f0f0f0; border-radius: 50%;
+/* BOTÕES NA JANELA */
+.controles-janela {
+    position: absolute; right: 20px;
+    display: flex; flex-direction: column; gap: 10px;
 }
 
-/* --- FUMAÇA --- */
-.vapor-container {
-    position: absolute; top: -50px; left: 40px;
-    z-index: 100; transform: rotateX(-45deg); /* Mantém fumaça em 2D de frente */
+.btn-viagem {
+    padding: 15px; border-radius: 50%; border: none;
+    background: #a67c52; color: white; cursor: pointer;
 }
-
-.p {
-    position: absolute; width: 40px; height: 40px;
-    background: rgba(255,255,255,0.5); border-radius: 50%;
-    filter: blur(12px); animation: subir 3s infinite linear; opacity: 0;
-}
-.p1 { animation-delay: 0s; }
-.p2 { left: 15px; animation-delay: 1s; }
-.p3 { left: -10px; animation-delay: 2s; }
-
-@keyframes subir {
-    0% { transform: translateY(0) scale(0.5); opacity: 0; }
-    30% { opacity: 0.6; }
-    100% { transform: translateY(-120px) scale(2); opacity: 0; }
-}
-
-@keyframes vibrar-objeto {
-    from { transform: rotateX(45deg) rotateY(5deg) rotateZ(-15deg) translateY(0); }
-    to { transform: rotateX(45deg) rotateY(5deg) rotateZ(-15deg) translateY(2px); }
-}
-
-.titulo-faustina { margin: 0; font-size: 1rem; color: #a67c52; }
