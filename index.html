@@ -8,55 +8,60 @@
 </head>
 <body>
 
-    <div id="container-trem">
+    <!-- O CONTÊINER QUE SEGURA TUDO -->
+    <main id="mundo">
         
-        <!-- JANELA -->
+        <!-- PARTE 1: A JANELA (Onde ficarão os biomas) -->
         <section id="area-janela">
-            <div class="parede-madeira">
-                <div class="moldura-janela">
-                    <div id="paisagem">
-                        <div class="ceu"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- MESA 3D -->
-        <section id="area-mesa">
-            <div id="chao-trem"></div>
-            
-            <div id="cena-3d">
-                
-                <!-- LIVRO 3D (POSICIONADO PARA NORDESTE) -->
-                <div id="livro-3d">
-                    <div class="capa-baixo"></div>
-                    <div class="paginas-volume"></div>
-                    <div class="pagina-topo">
-                        <h2 class="titulo-faustina">Anotações</h2>
-                        <div class="pauta-keep">
-                            <textarea id="bloco-notas" placeholder="Escreva sua jornada..."></textarea>
+            <div class="parede">
+                <div class="moldura">
+                    <!-- O cenário vai passar aqui dentro -->
+                    <div id="cenario" class="bioma-mata">
+                        <div class="camada nuvens"></div>
+                        <div class="camada montanhas"></div>
+                        <div class="camada solo"></div>
+                        <div class="objetos-passando" id="container-objetos">
+                            <!-- Árvores/Prédios entrarão via JavaScript depois -->
                         </div>
                     </div>
                 </div>
+                
+                <!-- BOTOES DE INTERAÇÃO -->
+                <div class="controles-janela">
+                    <button onclick="mudarBioma()" class="btn-viagem">Próxima Região</button>
+                    <button onclick="mudarClima()" class="btn-clima">Trocar Clima</button>
+                    <button onclick="alternarDiaNoite()" class="btn-luz">🌙 / ☀️</button>
+                </div>
+            </div>
+        </section>
 
-                <!-- XÍCARA 3D -->
-                <div id="xicara-3d">
-                    <div class="vapor-container">
-                        <span class="p p1"></span>
-                        <span class="p p2"></span>
-                        <span class="p p3"></span>
+        <!-- PARTE 2: A MESA (Onde você escreve) -->
+        <section id="area-mesa">
+            <div id="cena-3d">
+                
+                <!-- O LIVRO ABERTO -->
+                <div id="livro-3d" class="tremor">
+                    <div class="folha esquerda"></div>
+                    <div class="folha direita">
+                        <h2 class="titulo">Anotações</h2>
+                        <textarea id="bloco-notas" placeholder="Escreva sua jornada..."></textarea>
+                        <div class="linha-pauta"></div>
                     </div>
-                    <div class="pires"></div>
-                    <div class="corpo-xicara">
-                        <div class="cafe-liquido"></div>
+                </div>
+
+                <!-- A XÍCARA DE CAFÉ -->
+                <div id="xicara-3d" class="tremor">
+                    <div class="fumaça">
+                        <span></span><span></span><span></span>
                     </div>
-                    <div class="asa-xicara"></div>
+                    <div class="liquido"></div>
+                    <div class="asa"></div>
                 </div>
 
             </div>
         </section>
 
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
